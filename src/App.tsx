@@ -4,6 +4,7 @@ import type { Technology } from "./types";
 import Navbar from "./Component/Navbar";
 import Hero from "./Component/Hero";
 import TachList from "./Component/TachList";
+import Footer from "./Component/Footer";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -37,6 +38,7 @@ function App() {
       <Navbar />
       <Hero />
       <TachList />
+      <Footer />
     </div>
   );
 }
