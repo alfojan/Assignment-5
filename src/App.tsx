@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import type { Technology } from "./types";
 import Navbar from "./Component/Navbar";
+import Hero from "./Component/Hero";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -33,6 +34,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Hero />
 
       {loading && <p>Loading...</p>}
 
