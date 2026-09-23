@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Technology } from "./types";
 import Navbar from "./Component/Navbar";
 import Hero from "./Component/Hero";
+import TachList from "./Component/TachList";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -35,18 +36,7 @@ function App() {
     <div>
       <Navbar />
       <Hero />
-
-      {loading && <p>Loading...</p>}
-
-      {error && <p>{error}</p>}
-
-      {!loading && !error && (
-        <div>
-          {technologies.map((tech) => (
-            <p key={tech.id}>{tech.name}</p>
-          ))}
-        </div>
-      )}
+      <TachList />
     </div>
   );
 }
