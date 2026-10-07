@@ -1,41 +1,54 @@
-import React from "react";
 import heroImg from "../assets/banner-stack.png";
 
 export const Hero = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between px-12 py-16 bg-white max-w-7xl mx-auto gap-8">
-      {/* Left Text Content */}
-      <div className="flex-1 space-y-6">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-          Build Your Ideal <br />
-          <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
-            Development Stack
+    <section
+      id="home"
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20"
+    >
+      <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Text */}
+        <div className="flex-1">
+          <span className="inline-block mb-4 px-3 py-1 rounded-full bg-pink-50 text-pink-600 text-xs font-semibold">
+            Build • Explore • Create
           </span>
-        </h1>
 
-        <p className="text-gray-500 text-base max-w-lg leading-relaxed">
-          Explore frontend, backend, database, and tooling options, compare them
-          side by side, and put together the stack that fits your next project.
-        </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+            Build Your Ideal{" "}
+            <span className="text-brand-gradient">Development Stack</span>
+          </h1>
 
-        {/* Buttons */}
-        <div className="flex items-center gap-4 pt-2">
-          <button className="px-6 py-2.5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white font-medium rounded-lg shadow-sm hover:opacity-90 transition-opacity">
-            Explore Technologies
-          </button>
-          <button className="px-6 py-2.5 border border-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors">
-            Learn More
-          </button>
+          <p className="text-gray-500 text-base md:text-lg max-w-xl leading-relaxed mt-6">
+            Explore frontend, backend, database, and development tools, compare
+            your options, and build a technology stack that fits your next
+            project.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <a
+              href="#technologies"
+              className="brand-gradient text-white px-6 py-3 rounded-xl font-medium text-center hover:opacity-90 transition-opacity"
+            >
+              Explore Technologies
+            </a>
+
+            <a
+              href="#about"
+              className="px-6 py-3 border border-gray-200 text-gray-700 font-medium rounded-xl text-center hover:bg-gray-50 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
         </div>
-      </div>
 
-      {/* Right Image Content */}
-      <div className="flex-1 flex justify-center">
-        <img
-          src={heroImg}
-          alt="Development Stack Illustration"
-          className="w-full max-w-md object-contain"
-        />
+        {/* Image */}
+        <div className="flex-1 flex justify-center">
+          <img
+            src={heroImg}
+            alt="Development Stack Illustration"
+            className="w-full max-w-lg object-contain"
+          />
+        </div>
       </div>
     </section>
   );

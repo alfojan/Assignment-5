@@ -1,68 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TechCard from "./TechCard";
-import Sidebar from "./Sidebar";
 import type { Technology } from "../types";
 
-const TachList: React.FC = () => {
-  const [technologiesData, setTechnologiesData] = useState<Technology[]>([]);
-  const [myStack, setMyStack] = useState<Technology[]>([]);
+interface TachListProps {
+  technologies: Technology[];
+  stack: Technology[];
+  loading: boolean;
+  error: string | null;
+  onAddToStack: (tech: Technology) => void;
+}
 
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data: Technology[]) => setTechnologiesData(data))
-      .catch((err) => console.error("Error loading json data:", err));
-  }, []);
+const TachList: React.FC<TachListProps> = ({
+  technologies,
+  stack,
+  loading,
+  error,
+  onAddToStack,
+}) => {
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <div
+            key={index}
+            className="h-64 rounded-2xl bg-gray-100 animate-pulse"
+          />
+        ))}
+      </div>
+    );
+  }
 
-  const handleAddToStack = (tech: Technology) => {
-    if (!myStack.find((item) => item.id === tech.id)) {
-      setMyStack([...myStack, tech]);
-    }
-  };
+  if (error) {
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-center">
+        <p className="text-red-600 font-medium">{error}</p>
+      </div>
+    );
+  }
 
-  const handleRemoveFromStack = (id: string) => {
-    setMyStack(myStack.filter((item) => item.id !== id));
-  };
-
-  const handleClearAll = () => {
-    setMyStack([]);
-  };
+  if (technologies.length === 0) {
+    return (
+      <div className="rounded-2xl border border-gray-200 p-8 text-center">
+        <p className="text-gray-500">No technologies found.</p>
+      </div>
+    );
+  }
 
   return (
-    <section className="max-w-7xl mx-auto px-8 py-12">
-      {/* Title Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-extrabold text-gray-900">
-          Explore the <span className="text-[#e91e63]">Technologies</span>
-        </h2>
-        <p className="text-sm text-gray-500 mt-1">
-          Pick one technology per category to build your ideal stack.
-        </p>
-      </div>
-
-      {/* Main Grid Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Tech Cards Section */}
-        <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {technologiesData.map((tech) => (
-            <TechCard
-              key={tech.id}
-              tech={tech}
-              onAddToStack={handleAddToStack}
-            />
-          ))}
-        </div>
-
-        {/* Sidebar Section */}
-        <div className="lg:col-span-1">
-          <Sidebar
-            stack={myStack}
-            onRemoveFromStack={handleRemoveFromStack}
-            onClearAll={handleClearAll}
-          />
-        </div>
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+      {technologies.map((tech) => (
+        <TechCard
+          key={tech.id}
+          tech={tech}
+          isAdded={stack.some((item) => item.id === tech.id)}
+          onAddToStack={onAddToStack}
+        />
+      ))}
+    </div>
   );
 };
 

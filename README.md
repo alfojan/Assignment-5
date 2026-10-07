@@ -1,32 +1,81 @@
-# React + TypeScript + Vite
+# Dev Stack Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Dev Stack Builder is a React and TypeScript based web application that helps developers explore different technologies and build their own development stack.
 
-Currently, two official plugins are available:
+## Live Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Add your live deployment link here.
 
-## React Compiler
+## GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/alfojan/Assignment-5
 
-## Expanding the Oxlint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Icons
+- React Toastify
+- JSON
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Features
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+1. Users can explore different development technologies.
+2. Users can add technologies to their personal development stack.
+3. Users can remove individual technologies or remove all selected technologies.
+4. The application prevents duplicate technologies from being added.
+5. Users can see the total number of technologies in their stack.
+6. Toast notifications are shown for add, duplicate, remove and remove-all actions.
+7. The application is responsive for mobile, tablet and desktop devices.
+
+## React Questions
+
+### 1. What is the difference between state and props?
+
+Props are used to pass data from a parent component to a child component.
+
+State is used to store data inside a component and can change when the user interacts with the application.
+
+For example, in this project the selected technology stack is stored in state and passed to child components through props.
+
+### 2. What is the purpose of useState?
+
+useState is a React Hook used to create and manage state inside a functional component.
+
+When the state changes, React updates the component so the new data can be displayed.
+
+### 3. What is the purpose of useEffect?
+
+useEffect is used to perform side effects in React.
+
+In this project, useEffect is used to fetch technology data from the JSON file when the application loads.
+
+### 4. What is conditional rendering?
+
+Conditional rendering means displaying different UI based on a condition.
+
+For example, if the stack is empty, we show an empty message. If technologies are loading, we show a loading state.
+
+### 5. What is the difference between map() and filter()?
+
+map() creates a new array by changing or transforming every item.
+
+filter() creates a new array containing only the items that match a condition.
+
+In this project, map() is used to display technology cards and filter() is used to remove technologies from the stack.
+
+### 6. Why do we use keys in React lists?
+
+Keys help React identify individual elements in a list.
+
+When a list changes, React uses keys to understand which items were added, removed or changed.
+
+### 7. What is TypeScript and why is it useful in React?
+
+TypeScript is a typed version of JavaScript.
+
+It helps developers catch many errors before running the application and makes the code easier to understand and maintain.
+
+In this project, TypeScript interfaces are used to define the structure of technology data.
